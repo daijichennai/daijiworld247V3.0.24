@@ -1,23 +1,28 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger" >
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>{{newsCatName}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  <ion-content #container>
+    <div *ngFor="let i of listNews">
+      <ion-item >
+        <ion-thumbnail item-left *ngIf=" i.homePageImage != ''">
+          <!-- <img [defaultImage]="'../assets/imgs/lazyDaijiLogo.png'" [lazyLoad]="i.newsImage" [scrollObservable]="container.ionScroll" /> -->
+          <img [src]="i.homePageImage" />
+        </ion-thumbnail>
+        <h2 [innerHTML]="i.newsTitle" text-wrap>{{i.newsTitle}}</h2>
+        <p><i class="fa fa-clock-o"></i>&nbsp;{{i.newsDate}}&nbsp;
+        </p>
+      </ion-item>
+    </div>
+    
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    
 </ion-content>

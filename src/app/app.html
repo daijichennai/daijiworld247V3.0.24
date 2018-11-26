@@ -1,14 +1,14 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
+  <ion-header  >
+    <ion-toolbar color="danger">
+      <ion-title>Daijiworld 247</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+        <i class="{{p.icon}} fa-1x"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{p.title}}<i class="fa fa-angle-right" item-right></i>
       </button>
     </ion-list>
   </ion-content>

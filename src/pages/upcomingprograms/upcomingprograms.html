@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="danger" >
+    <ion-title>Upcoming Program</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="toggleMenu();">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-content>
+    <div *ngFor="let i of listOfUpcomingPro">
+      <ion-item>       
+        <h2 class="colorRed" [innerHTML]="i.prgTitle"  text-wrap></h2>
+        <p><i class="fa fa-clock-o"></i>&nbsp;{{i.prgDatehourSlot}}
+        </p>
+      </ion-item>
+    </div>
+
+  </ion-content>
