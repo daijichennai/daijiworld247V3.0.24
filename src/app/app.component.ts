@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ToastController, App, AlertController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { Network } from "@ionic-native/network";
 
 
 @Component({
@@ -15,7 +15,15 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any, icon: string, newsCat: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+          public platform: Platform,
+          public statusBar: StatusBar,
+          public splashScreen: SplashScreen,
+          public network: Network,
+          public app: App,
+          public toast: ToastController,
+          public alertCtrl: AlertController,
+            ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -33,19 +41,49 @@ export class MyApp {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+    this.platform.ready().then(() => { 
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.platform.registerBackButtonAction(() => {
+        let nav = this.app.getActiveNav();
+        if (nav.canGoBack()) { //Can we go back?
+          nav.pop();
+        } else {
+          this.exitFunction();
+        }
+      });
+
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
+  openPage(page) { 
     this.nav.setRoot(page.component,{
       "newsCat": page.newsCat
     });
   }
+
+  exitFunction() {
+    let alert = this.alertCtrl.create({
+      title: 'Exit Daijiworld247 ?',
+      message: 'Do you want to exit the app?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+
+          }
+        },
+        {
+          text: 'Exit',
+          handler: () => {
+            this.platform.exitApp();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }   
+
 }

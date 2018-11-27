@@ -12,14 +12,15 @@
       <div class="card">
         <ion-item>
           <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/CNwMEoAqEZ8" frameborder="0" width="560" height="315"></iframe>
+            <iframe src="https://www.youtube.com/embed/9E_GbPSw_Fw" frameborder="0" width="560" height="315"></iframe>
           </div>
         </ion-item>
       </div>
     </ion-list>
     
   <h1 padding class="colorRed" >Latest News</h1>
-  <ion-card *ngFor="let i of jsonItems">
+  <div *ngFor="let i of jsonItems">
+  <ion-card (click)="goToNewsDisplay(i.newsID,i.newsTitle)" >
 
     <img [src]="i.homePageImage" />
     <ion-card-content>
@@ -42,7 +43,7 @@
       </ion-col>
     </ion-row>
   </ion-card>
-  
+  </div>
     
 
 </ion-content>

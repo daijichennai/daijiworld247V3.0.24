@@ -27,6 +27,13 @@ export class HomePage {
     this.getNewsData();
   }
 
+  goToNewsDisplay(newsID: number, newsTitle: String) {
+    this.navCtrl.push('NewsdisplayPage', {
+      "newsID": newsID,
+      "newsTitle": newsTitle
+    })
+  }
+
 
   getNewsData() {
     let data: Observable<any>;

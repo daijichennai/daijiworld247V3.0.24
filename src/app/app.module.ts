@@ -5,17 +5,17 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CommonFuncProvider } from '../providers/common-func/common-func';
-import { HttpClientModule } from '@angular/common/http';
-import { LazyLoadImageModule } from 'ng2-lazyload-image';
+import { HttpClientModule } from '@angular/common/http'; 
 import { SocialSharing } from "@ionic-native/social-sharing";
+import { Network } from "@ionic-native/network";
+
 @NgModule({
   declarations: [
     MyApp,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    LazyLoadImageModule,
+    HttpClientModule, 
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -26,6 +26,7 @@ import { SocialSharing } from "@ionic-native/social-sharing";
     StatusBar,
     SplashScreen,
     SocialSharing,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommonFuncProvider
   ]
