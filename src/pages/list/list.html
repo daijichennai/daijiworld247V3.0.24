@@ -10,7 +10,7 @@
 <ion-content>
   <ion-content #container>
     <div *ngFor="let i of listNews">
-      <ion-item >
+      <ion-item (click)="goToNewsDisplay(i.newsID,i.newsTitle)" >
         <ion-thumbnail item-left *ngIf=" i.homePageImage != ''">
           <!-- <img [defaultImage]="'../assets/imgs/lazyDaijiLogo.png'" [lazyLoad]="i.newsImage" [scrollObservable]="container.ionScroll" /> -->
           <img [src]="i.homePageImage" />

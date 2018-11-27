@@ -34,6 +34,13 @@ private newsCategory:string="";
     
   }
 
+  goToNewsDisplay(newsID:number,newsTitle:String){
+    this.navCtrl.push('NewsdisplayPage',{
+      "newsID":newsID,
+      "newsTitle": newsTitle
+    })
+  }
+
   dispNewsByCatCode(newsCat) {
     let data: Observable<any>;
     //alert(newsSection);

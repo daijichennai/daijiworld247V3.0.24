@@ -7,7 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { CommonFuncProvider } from '../providers/common-func/common-func';
 import { HttpClientModule } from '@angular/common/http';
 import { LazyLoadImageModule } from 'ng2-lazyload-image';
-
+import { SocialSharing } from "@ionic-native/social-sharing";
 @NgModule({
   declarations: [
     MyApp,
@@ -25,6 +25,7 @@ import { LazyLoadImageModule } from 'ng2-lazyload-image';
   providers: [
     StatusBar,
     SplashScreen,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommonFuncProvider
   ]
