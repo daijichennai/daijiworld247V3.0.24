@@ -12,11 +12,9 @@
 <ion-content padding>
 <div *ngFor="let i of singleNewsData">
   <h4 ion-text >{{i.newsTitle}}</h4>
-
   <ion-row>
     <ion-col>
       <i class="fa fa-clock-o"></i>&nbsp;{{i.newsDate}}
-
       <span class="colorRed" [innerHTML]="i.newsComments"></span>
     </ion-col>
   </ion-row>

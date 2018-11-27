@@ -7,8 +7,42 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <!-- <h1><i class="fa fa-flag" aria-hidden="true"></i>&nbsp; Font Awesome</h1> -->
-<iframe style="width:auto;" src="https://www.youtube.com/embed/CNwMEoAqEZ8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen></iframe>
+<ion-content >
+    <ion-list>
+      <div class="card">
+        <ion-item>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/CNwMEoAqEZ8" frameborder="0" width="560" height="315"></iframe>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+    
+  <h1 padding class="colorRed" >Latest News</h1>
+  <ion-card *ngFor="let i of jsonItems">
+
+    <img [src]="i.homePageImage" />
+    <ion-card-content>
+      <p>{{i.newsTitle}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button icon-start clear small>
+          <ion-icon name="clock"></ion-icon>
+          <div>{{i.newsDate}}</div>
+        </button>
+      </ion-col>
+
+      <ion-col col-6 text-right>
+        <button (click)="shareNews(i.newsTitle,i.newsID)" ion-button icon-start clear small>
+          <ion-icon name="share-alt"></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  
+    
+
 </ion-content>
